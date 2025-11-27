@@ -39,7 +39,10 @@ module 0xc0ffee::zk_soundness_vault {
     const ENOT_NOTE_OWNER: u64 = 4;
     const EONLY_ADMIN_CAN_INIT: u64 = 5;
 
-    public fun init_module(admin: &signer) {
+        /// Return true if the Vault resource has been initialized under ADMIN_ADDR.
+    public fun is_initialized(): bool {
+        exists<Vault>(ADMIN_ADDR)
+    }
         let admin_addr = signer::address_of(admin);
         assert!(admin_addr == @0xc0ffee, EONLY_ADMIN_CAN_INIT);
 
