@@ -130,14 +130,15 @@ module 0xc0ffee::zk_soundness_vault {
         vector::length<Note>(&vault.notes) as u64
     }
 
-    fun find_note_mut(
-        notes: &mut vector<Note>,
+    /// Internal helper: find a note by ID (read-only).
+    fun find_note(
+        notes: &vector<Note>,
         note_id: u64,
-    ): (u64, &mut Note) {
-        let i = 0;
+    ): (u64, &Note) {
+        let mut i = 0;
         let len = vector::length<Note>(notes);
         while (i < len) {
-            let note_ref = vector::borrow_mut<Note>(notes, i);
+            let note_ref = vector::borrow<Note>(notes, i);
             if (note_ref.id == note_id) {
                 return (i as u64, note_ref);
             };
