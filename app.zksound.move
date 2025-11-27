@@ -64,7 +64,7 @@ module 0xc0ffee::zk_soundness_vault {
 
         coin::transfer<AptosCoin>(user, @0xc0ffee, amount);
 
-        let vault = borrow_global_mut<Vault>(@0xc0ffee);
+               let vault = borrow_global_mut<Vault>(ADMIN_ADDR);
 
         let note_id = vault.next_note_id;
         vault.next_note_id = note_id + 1;
