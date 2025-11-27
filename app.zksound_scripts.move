@@ -3,9 +3,10 @@ module 0xc0ffee::zk_soundness_vault_scripts {
 
     /// Initialize the vault once (admin must be the module / vault admin).
     ///
-    /// Transaction example:
-    ///   - signer: admin account
-    ///   - no extra arguments
+    /// Transaction example (CLI / wallet):
+    ///   - function: 0xc0ffee::zk_soundness_vault_scripts::init_vault
+    ///   - signer:  admin account at 0xc0ffee
+    ///   - args:    none
     public entry fun init_vault(admin: &signer) {
         // calls the original module's initializer
         zk_soundness_vault::init_module(admin);
