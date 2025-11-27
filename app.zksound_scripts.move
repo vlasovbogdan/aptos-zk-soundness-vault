@@ -41,8 +41,9 @@ module 0xc0ffee::zk_soundness_vault_scripts {
         zk_soundness_vault::withdraw_note(caller, note_id, recipient);
     }
 
-    /// Convenience view: re-expose total locked APT so you can call
+       /// Convenience view: re-expose total locked APT so you can call
     /// this module instead of the base one if you prefer.
+    /// This function is read-only and does not modify on-chain state.
     public fun get_total_locked_via_script(): u64 {
         zk_soundness_vault::get_total_locked()
     }
