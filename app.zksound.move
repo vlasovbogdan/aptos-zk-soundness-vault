@@ -145,4 +145,17 @@ module 0xc0ffee::zk_soundness_vault {
         };
         abort ENOTE_NOT_FOUND;
     }
+    // ------------------------------------------------------------------
+    // Example flow (off-chain / frontend):
+    //
+    // 1. User calls `deposit_with_commitment(user, commitment, amount)`
+    //    to lock AptosCoin and create a note.
+    // 2. Off-chain, the user tracks their note ID and commitment.
+    // 3. Later, the user calls `withdraw_note(caller, note_id, recipient)`
+    //    to spend their note.
+    // 4. Observers can track vault size via `get_total_locked`,
+    //    `get_note_count`, or `get_vault_stats`.
+    // ------------------------------------------------------------------
+}
+
 }
