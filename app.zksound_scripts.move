@@ -51,4 +51,15 @@ module 0xc0ffee::zk_soundness_vault_scripts {
     public fun get_note_count_via_script(): u64 {
         zk_soundness_vault::get_note_count()
     }
+    /// Convenience: deposit with an empty commitment.
+    /// Useful for simple demos where you don't yet have a zk/FHE commitment.
+    public entry fun deposit_with_empty_commitment_script(
+        user: &signer,
+        amount: u64,
+    ) {
+        let commitment = vector::empty<u8>();
+        vault::deposit_with_commitment(user, commitment, amount);
+    }
+
 }
+
