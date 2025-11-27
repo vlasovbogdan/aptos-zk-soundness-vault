@@ -48,7 +48,12 @@ module 0xc0ffee::zk_soundness_vault_scripts {
     }
 
     /// Convenience view: re-expose note count.
-    public fun get_note_count_via_script(): u64 {
-        zk_soundness_vault::get_note_count()
+     /// Convenience view: get (total_locked, note_count) in a single call.
+    public fun get_vault_stats_via_script(): (u64, u64) {
+        let total = vault::get_total_locked();
+        let count = vault::get_note_count();
+        (total, count)
+    }
+
     }
 }
