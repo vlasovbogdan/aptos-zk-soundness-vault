@@ -1,5 +1,11 @@
 module 0xc0ffee::zk_soundness_vault_scripts {
     use 0xc0ffee::zk_soundness_vault;
+    use std::vector;
+
+    /// Transaction scripts and convenience wrappers around
+    /// 0xc0ffee::zk_soundness_vault. These are meant to be called
+    /// directly from wallets / CLIs.
+
 
     /// Initialize the vault once (admin must be the module / vault admin).
     ///
