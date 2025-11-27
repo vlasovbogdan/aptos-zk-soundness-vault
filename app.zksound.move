@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// zk_soundness_vault: simple note-based vault with commitments over Aptos.
+
 module 0xc0ffee::zk_soundness_vault {
     use std::signer;
     use std::vector;
