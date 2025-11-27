@@ -1,5 +1,7 @@
 module 0xc0ffee::zk_soundness_vault_scripts {
-    use 0xc0ffee::zk_soundness_vault;
+      use 0xc0ffee::zk_soundness_vault as vault;
+    use std::vector;
+    use aptos_std::signer;
 
     /// Initialize the vault once (admin must be the module / vault admin).
     ///
