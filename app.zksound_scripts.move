@@ -38,7 +38,7 @@ module 0xc0ffee::zk_soundness_vault_scripts {
         note_id: u64,
         recipient: address,
     ) {
-        zk_soundness_vault::withdraw_note(caller, note_id, recipient);
+              vault::withdraw_note(caller, note_id, recipient);
     }
 
     /// Convenience view: re-expose total locked APT so you can call
