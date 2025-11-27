@@ -125,9 +125,11 @@ module 0xc0ffee::zk_soundness_vault {
         vault.total_locked
     }
 
-    public fun get_note_count(): u64 acquires Vault {
-        let vault = borrow_global<Vault>(@0xc0ffee);
-        vector::length<Note>(&vault.notes) as u64
+        /// Return (total_locked, note_count) for convenience.
+    public fun get_vault_stats(): (u64, u64) acquires Vault {
+        let vault = borrow_global<Vault>(ADMIN_ADDR);
+        let count = vector::length<Note>(&vault.notes) as u64;
+        (vault.total_locked, count)
     }
 
     fun find_note_mut(
