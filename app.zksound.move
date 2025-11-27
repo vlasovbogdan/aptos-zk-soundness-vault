@@ -5,6 +5,8 @@ module 0xc0ffee::zk_soundness_vault {
     use aptos_framework::coin;
     use aptos_framework::aptos_coin::AptosCoin;
 
+  const ADMIN_ADDR: address = @0xc0ffee;
+
     struct DepositEvent has copy, drop, store {
         owner: address,
         commitment: vector<u8>,
