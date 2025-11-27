@@ -24,7 +24,7 @@ module 0xc0ffee::zk_soundness_vault_scripts {
         commitment: vector<u8>,
         amount: u64,
     ) {
-        zk_soundness_vault::deposit_with_commitment(user, commitment, amount);
+              vault::deposit_with_commitment(user, commitment, amount);
     }
 
     /// Withdraw coins using an existing note.
