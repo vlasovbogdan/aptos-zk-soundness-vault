@@ -8,7 +8,7 @@ module 0xc0ffee::zk_soundness_vault_scripts {
     ///   - no extra arguments
     public entry fun init_vault(admin: &signer) {
         // calls the original module's initializer
-        zk_soundness_vault::init_module(admin);
+               vault::init_module(admin);
     }
 
     /// Deposit coins into the zk soundness vault with a commitment.
