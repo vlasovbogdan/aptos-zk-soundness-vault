@@ -1,5 +1,5 @@
 module 0xc0ffee::zk_soundness_vault_scripts {
-    use 0xc0ffee::zk_soundness_vault;
+       use 0xc0ffee::zk_soundness_vault as vault;
 
     /// Initialize the vault once (admin must be the module / vault admin).
     ///
