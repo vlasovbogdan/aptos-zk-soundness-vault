@@ -134,7 +134,7 @@ module 0xc0ffee::zk_soundness_vault {
         notes: &mut vector<Note>,
         note_id: u64,
     ): (u64, &mut Note) {
-        let i = 0;
+               let mut i = 0;
         let len = vector::length<Note>(notes);
         while (i < len) {
             let note_ref = vector::borrow_mut<Note>(notes, i);
