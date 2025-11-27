@@ -5,18 +5,22 @@ module 0xc0ffee::zk_soundness_vault {
     use aptos_framework::coin;
     use aptos_framework::aptos_coin::AptosCoin;
 
+      /// Emitted whenever a user deposits coins with a note commitment.
     struct DepositEvent has copy, drop, store {
         owner: address,
+        /// The note commitment (can be redacted in events if needed).
         commitment: vector<u8>,
         amount: u64,
     }
 
+    /// Emitted whenever a note is withdrawn (spent).
     struct WithdrawalEvent has copy, drop, store {
         owner: address,
         note_id: u64,
         amount: u64,
     }
 
+    /// A single locked note in the vault.
     struct Note has copy, drop, store {
         id: u64,
         owner: address,
@@ -25,13 +29,20 @@ module 0xc0ffee::zk_soundness_vault {
         spent: bool,
     }
 
+    /// Global vault resource stored under ADMIN_ADDR.
     struct Vault has key {
+        /// Monotonically increasing note ID counter.
         next_note_id: u64,
+        /// Total AptosCoin currently locked in all unspent notes.
         total_locked: u64,
+        /// All notes ever created (spent notes are marked, not removed).
         notes: vector<Note>,
+        /// Event handle for deposits.
         deposits: event::EventHandle<DepositEvent>,
+        /// Event handle for withdrawals.
         withdrawals: event::EventHandle<WithdrawalEvent>,
     }
+
 
     const EINSUFFICIENT_LOCKED: u64 = 1;
     const ENOTE_NOT_FOUND: u64 = 2;
