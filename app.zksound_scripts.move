@@ -51,4 +51,26 @@ module 0xc0ffee::zk_soundness_vault_scripts {
     public fun get_note_count_via_script(): u64 {
         zk_soundness_vault::get_note_count()
     }
+    // -----------------------------------------------------------
+    // Example user flow:
+    //
+    // 1. Admin calls  init_vault(admin).
+    // 2. User deposits:
+    //      deposit_with_commitment_script(user, commitment, amount)
+    //    or
+    //      deposit_with_empty_commitment_script(user, amount)
+    // 3. Off-chain, the user tracks which note_id corresponds to which deposit.
+    // 4. Later, they withdraw with:
+    //      withdraw_note_script(caller, note_id, recipient)
+    //    or
+    //      withdraw_note_to_caller_script(caller, note_id)
+    // 5. Dashboards can use:
+    //      get_total_locked_via_script(),
+    //      get_note_count_via_script(),
+    //      get_vault_stats_via_script(),
+    //      has_any_notes_via_script(),
+    //      is_vault_empty_via_script().
+    // -----------------------------------------------------------
+}
+
 }
