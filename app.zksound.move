@@ -16,6 +16,12 @@ module 0xc0ffee::zk_soundness_vault {
         note_id: u64,
         amount: u64,
     }
+    /// Return true if the given address can currently spend the note.
+    public fun can_spend_note(owner: address, note_id: u64): bool acquires Vault {
+        let vault = borrow_global_mut<Vault>(ADMIN_ADDR);
+        let (_, note_ref) = find_note_mut(&mut vault.notes, note_id);
+        note_ref.owner == owner && !note_ref.spent
+    }
 
     struct Note has copy, drop, store {
         id: u64,
