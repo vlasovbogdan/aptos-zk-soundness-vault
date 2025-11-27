@@ -40,6 +40,14 @@ module 0xc0ffee::zk_soundness_vault_scripts {
     ) {
         zk_soundness_vault::withdraw_note(caller, note_id, recipient);
     }
+    /// Convenience: withdraw a note directly back to the caller's own address.
+    public entry fun withdraw_note_to_caller_script(
+        caller: &signer,
+        note_id: u64,
+    ) {
+        let recipient = signer::address_of(caller);
+        vault::withdraw_note(caller, note_id, recipient);
+    }
 
     /// Convenience view: re-expose total locked APT so you can call
     /// this module instead of the base one if you prefer.
