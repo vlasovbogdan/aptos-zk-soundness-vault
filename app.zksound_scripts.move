@@ -57,6 +57,10 @@ module 0xc0ffee::zk_soundness_vault_scripts {
     public fun has_any_notes_via_script(): bool {
         vault::get_note_count() > 0
     }
+    /// Convenience view: return true if no coins are currently locked.
+    public fun is_vault_empty_via_script(): bool {
+        vault::get_total_locked() == 0
+    }
 
     /// Convenience view: re-expose total locked APT so you can call
     /// this module instead of the base one if you prefer.
