@@ -95,7 +95,9 @@ module 0xc0ffee::zk_soundness_vault {
             &mut vault.deposits,
             DepositEvent {
                 owner: user_addr,
-                commitment: vector::empty<u8>(), // off-chain keeps the true blob
+                               // We deliberately redact the on-chain commitment for privacy.
+                // Off-chain indexers or the user keep the true blob.
+                commitment: vector::empty<u8>(),
                 amount,
             },
         );
