@@ -47,8 +47,8 @@ module 0xc0ffee::zk_soundness_vault {
     const EONLY_ADMIN_CAN_INIT: u64 = 5;
 
     public fun init_module(admin: &signer) {
-        let admin_addr = signer::address_of(admin);
-        assert!(admin_addr == @0xc0ffee, EONLY_ADMIN_CAN_INIT);
+            let admin_addr = signer::address_of(admin);
+        assert!(admin_addr == ADMIN_ADDR, EONLY_ADMIN_CAN_INIT);
 
         move_to(
             admin,
