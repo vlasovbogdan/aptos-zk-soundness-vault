@@ -108,7 +108,19 @@ module 0xc0ffee::zk_soundness_vault {
             },
         );
     }
-
+    /// Withdraw an unspent note to the given recipient address.
+    ///
+    /// Checks:
+    /// - caller must be the note owner
+    /// - note must exist
+    /// - note must not be spent
+    /// - vault must have enough locked funds
+    ///
+    /// Effects:
+    /// - marks note as spent
+    /// - decrements total_locked
+    /// - transfers AptosCoin to recipient
+    /// - emits WithdrawalEvent
     public entry fun withdraw_note(
         caller: &signer,
         note_id: u64,
