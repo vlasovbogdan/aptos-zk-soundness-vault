@@ -69,9 +69,9 @@ module 0xc0ffee::zk_soundness_vault {
     ) acquires Vault {
         let user_addr = signer::address_of(user);
 
-        coin::transfer<AptosCoin>(user, @0xc0ffee, amount);
+        coin::transfer<AptosCoin>(user, ADMIN_ADDR, amount);
 
-        let vault = borrow_global_mut<Vault>(@0xc0ffee);
+        let vault = borrow_global_mut<Vault>(ADMIN_ADDR);
 
         let note_id = vault.next_note_id;
         vault.next_note_id = note_id + 1;
