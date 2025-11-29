@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Script helpers for interacting with 0xc0ffee::zk_soundness_vault.
+
 module 0xc0ffee::zk_soundness_vault_scripts {
     use 0xc0ffee::zk_soundness_vault;
 
