@@ -16,12 +16,17 @@ module 0xc0ffee::zk_soundness_vault_scripts {
                vault::init_module(admin);
     }
 
-    /// Deposit coins into the zk soundness vault with a commitment.
+      /// Deposit coins into the zk soundness vault with a commitment.
     ///
     /// Arguments:
     ///   - user: signer whose APT will be locked
     ///   - commitment: opaque bytes from your zk / FHE system
     ///   - amount: amount of APT to lock
+    ///
+    /// Example (conceptual):
+    ///   - function: 0xc0ffee::zk_soundness_vault_scripts::deposit_with_commitment_script
+    ///   - signer:   user's account
+    ///   - args:     (commitment_bytes, amount)
     ///
     /// You typically construct `commitment` off-chain (hash, encrypted note, etc.).
     public entry fun deposit_with_commitment_script(
