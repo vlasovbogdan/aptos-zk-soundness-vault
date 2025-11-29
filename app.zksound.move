@@ -112,7 +112,7 @@ module 0xc0ffee::zk_soundness_vault {
         note_ref.spent = true;
         vault.total_locked = vault.total_locked - note_ref.amount;
 
-        coin::transfer<AptosCoin>(&signer::borrow_address(caller), recipient, note_ref.amount);
+                coin::transfer<AptosCoin>(caller, recipient, note_ref.amount);
 
         event::emit_event<WithdrawalEvent>(
             &mut vault.withdrawals,
