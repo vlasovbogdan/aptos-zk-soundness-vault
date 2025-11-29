@@ -40,10 +40,15 @@ module 0xc0ffee::zk_soundness_vault {
         withdrawals: event::EventHandle<WithdrawalEvent>,
     }
 
+    /// Error: vault does not have enough locked funds.
     const EINSUFFICIENT_LOCKED: u64 = 1;
+    /// Error: note with the given ID does not exist.
     const ENOTE_NOT_FOUND: u64 = 2;
+    /// Error: note was already spent.
     const ENOTE_ALREADY_SPENT: u64 = 3;
+    /// Error: caller is not the owner of this note.
     const ENOT_NOTE_OWNER: u64 = 4;
+    /// Error: only the admin address can call `init_module`.
     const EONLY_ADMIN_CAN_INIT: u64 = 5;
 
     public fun init_module(admin: &signer) {
