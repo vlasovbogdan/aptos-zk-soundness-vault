@@ -43,6 +43,11 @@ module 0xc0ffee::zk_soundness_vault_scripts {
     ///   - caller: signer authorized (according to your off-chain logic) to spend `note_id`
     ///   - note_id: index / id of the note created by a previous deposit
     ///   - recipient: on-chain address that should receive the unlocked APT
+    ///
+    /// Example:
+    ///   - function: 0xc0ffee::zk_soundness_vault_scripts::withdraw_note_script
+    ///   - signer:   the authorized caller
+    ///   - args:     (note_id, recipient_address)
     public entry fun withdraw_note_script(
         caller: &signer,
         note_id: u64,
