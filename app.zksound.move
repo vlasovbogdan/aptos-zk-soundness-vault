@@ -127,13 +127,13 @@ module 0xc0ffee::zk_soundness_vault {
         let _ = idx; // silence unused warning
     }
 
-    public fun get_total_locked(): u64 acquires Vault {
-        let vault = borrow_global<Vault>(@0xc0ffee);
+       public fun get_total_locked(): u64 acquires Vault {
+        let vault = borrow_global<Vault>(ADMIN_ADDR);
         vault.total_locked
     }
 
-    public fun get_note_count(): u64 acquires Vault {
-        let vault = borrow_global<Vault>(@0xc0ffee);
+      public fun get_note_count(): u64 acquires Vault {
+        let vault = borrow_global<Vault>(ADMIN_ADDR);
         vector::length<Note>(&vault.notes) as u64
     }
 
