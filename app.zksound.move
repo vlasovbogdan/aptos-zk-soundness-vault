@@ -23,7 +23,13 @@ module 0xc0ffee::zk_soundness_vault {
         note_id: u64,
         amount: u64,
     }
-
+/// Return minimal metadata for a given note ID:
+    /// (owner, amount, spent)
+    public fun get_note_metadata(note_id: u64): (address, u64, bool) acquires Vault {
+        let vault = borrow_global_mut<Vault>(ADMIN_ADDR);
+        let (_, note_ref) = find_note_mut(&mut vault.notes, note_id);
+        (note_ref.owner, note_ref.amount, note_ref.spent)
+    }
     struct Note has copy, drop, store {
         id: u64,
         owner: address,
