@@ -2,6 +2,8 @@
 // zk_soundness_vault: simple note-based vault with commitments over Aptos.
 
 module 0xc0ffee::zk_soundness_vault {
+    /// A simple vault that locks AptosCoin into "notes" with opaque commitments.
+    /// Notes can later be withdrawn by the owner, tracked by events.
     use std::signer;
     use std::vector;
     use aptos_std::event;
