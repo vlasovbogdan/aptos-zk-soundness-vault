@@ -3,6 +3,7 @@
 
 module 0xc0ffee::zk_soundness_vault_scripts {
     use 0xc0ffee::zk_soundness_vault;
+    use std::vector;
 
     /// Initialize the vault once (admin must be the module / vault admin).
     ///
