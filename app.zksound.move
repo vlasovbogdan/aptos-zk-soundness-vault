@@ -23,6 +23,23 @@ module 0xc0ffee::zk_soundness_vault {
         note_id: u64,
         amount: u64,
     }
+    /// Return the raw on-chain commitment for a given note ID.
+    /// Aborts with ENOTE_NOT_FOUND if the note does not exist.
+    public fun get_note_commitment(note_id: u64): vector<u8> acquires Vault {
+        let vault = borrow_global<Vault>(ADMIN_ADDR);
+        let notes_ref = &vault.notes;
+        let len = vector::length<Note>(notes_ref);
+        let mut i = 0;
+        while (i < len) {
+            let note_ref = vector::borrow<Note>(notes_ref, i);
+            if (note_ref.id == note_id) {
+                return note_ref.commitment;
+            };
+            i = i + 1;
+        };
+        abort ENOTE_NOT_FOUND;
+    }
+
 /// Return minimal metadata for a given note ID:
     /// (owner, amount, spent)
     public fun get_note_metadata(note_id: u64): (address, u64, bool) acquires Vault {
