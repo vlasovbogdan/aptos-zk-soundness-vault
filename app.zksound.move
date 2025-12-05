@@ -151,6 +151,10 @@ module 0xc0ffee::zk_soundness_vault {
         // optional cleanup: keep vector shape simple by leaving the spent note in place
         let _ = idx; // silence unused warning
     }
+    /// Return true if the Vault resource has been initialized under ADMIN_ADDR.
+    public fun vault_exists(): bool {
+        exists<Vault>(ADMIN_ADDR)
+    }
 
        public fun get_total_locked(): u64 acquires Vault {
         let vault = borrow_global<Vault>(ADMIN_ADDR);
