@@ -127,7 +127,7 @@ module 0xc0ffee::zk_soundness_vault {
         recipient: address,
     ) acquires Vault {
         let caller_addr = signer::address_of(caller);
-        let vault = borrow_global_mut<Vault>(@0xc0ffee);
+               let vault = borrow_global_mut<Vault>(ADMIN_ADDR);
 
         let (idx, note_ref) = find_note_mut(&mut vault.notes, note_id);
         assert!(note_ref.owner == caller_addr, ENOT_NOTE_OWNER);
